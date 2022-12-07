@@ -5,8 +5,8 @@
 
 	class Database{
 		public $host = "localhost";
-		public $user = "shopcase_admin";
-		public $pass = "123456789Hung";
+		public $user = "root";
+		public $pass = "";
 		public $dbname = "shopcase";
 
 		public $link ;

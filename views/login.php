@@ -23,7 +23,7 @@
 		}
 	}
 ?>
-<div class="content">
+<div class="content" style="height:65vh">
 	<div class="login_panel">
 		<h3>Đã có tài khoản</h3>
 		<p>Đăng nhập bên dưới</p>
@@ -106,10 +106,24 @@
 			<div class="clear"></div>
 		</form>
 	</div>  	
-	<div class="clear"></div>
 </div>
 
 <style>
+	.content{
+		display:flex;
+		flex-direction:column;
+		flex-wrap:wrap;
+		justify-content:space-between;
+	}
+	.login_panel{
+		flex-basis:25%;
+	}
+	.register_account{
+		flex-basis:65%;
+	}
+
+
+
 	.fm_register input[type=password],input[type=text]{
 		font-size: 16px!important;
 		color: black!important;

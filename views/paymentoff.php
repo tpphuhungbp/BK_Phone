@@ -12,7 +12,7 @@
 		$_SESSION['tongsp'] = cart::get_amount();	
 	}
 ?>
-<div class="content">
+<div class="content" style="height:80vh;">
 	<div class="content_top search-price">
 		<div class="hding">
 			<h3 style="font-size: 22px;font-weight: 500;color: #6c6c6c">TRANG THANH TOÁN KHI NHẬN HÀNG</h3>
@@ -119,6 +119,8 @@
 	.order {
     width: 100%;
     display: flex;
+	flex-wrap:wrap;
+	justify-content: space-between;
 }
 
 .order table,
@@ -129,14 +131,14 @@ td {
 
 .bang {
     margin-top: 20px;
-    width: 50%;
     text-align: center;
+	flex-basis: 45%;
+
 }
 
 .bphai {
     margin-top: 20px;
-    width: 55%;
-    margin-left: 3%;
+	flex-basis: 45%;
 }
 
 .bang th {
@@ -214,5 +216,14 @@ td {
 .tongtien a:hover {
     opacity: 0.6;
     transition: 0.5s;
+}
+
+@media only screen and (max-width:800px) {
+	.bang{
+		flex-basis: 100%;
+	}
+	.bphai{
+		flex-basis: 100%;
+	}
 }
 </style>

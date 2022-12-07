@@ -1,5 +1,5 @@
 
-<div class="content">
+<div class="content" style="height:65vh">
 	<div class="content_top">
 		<h1>ĐẶT HÀNG THÀNH CÔNG</h1>
 		<h3>Chúng tôi sẽ liên hệ bạn sớm nhất có thể. Xem chi tiết đơn hàng <a href="?request=orderdetail">Chi tiết đơn hàng</a></h3>

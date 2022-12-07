@@ -11,10 +11,12 @@
 		$_SESSION['tongsp'] = cart::get_amount();	
 	}
 ?>
-<div class="content">
+<div class="content" style="height:80vh">
 	<div class="cartoption">		
 		<div class="cartpage">
-			<h2 style="width: 50%">GIỎ HÀNG &emsp;&emsp; <a href="?request=orderdetail">Chi tiết đơn đặt hàng</a></h2>
+			<h2>GIỎ HÀNG</h2>
+			<span><a href="?request=orderdetail">Chi tiết đơn đặt hàng</a></span>
+			<hr>
 			<table class="tblone">
 				<?php
 					if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true):
@@ -163,6 +165,9 @@
 	}
 	table,td,th{
 		border: 1px solid black;
+	}
+	td{
+		align-items:center;
 	}
 #giohang_rong{
 	margin: 10px 0px;

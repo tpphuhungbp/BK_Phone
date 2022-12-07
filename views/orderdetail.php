@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" style="height:65vh">
 	<div class="cartoption">
 		<div class="cartpage">
 			<h2 style="width: 40%">CHI TIẾT ĐƠN ĐẶT HÀNG</h2>

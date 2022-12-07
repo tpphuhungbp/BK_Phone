@@ -11,7 +11,7 @@
 		$updateview = product::update_view($id);
 	}
 ?>
-<div class="content">
+<div class="content" style="height:80vh">
 	<div class="section group">
 		<div class="cont-desc span_1_of_2">
 			<?php

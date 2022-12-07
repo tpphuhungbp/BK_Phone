@@ -1,13 +1,11 @@
 
-<?php
-	if(isset($_GET['request'])&& $_GET['request']=='order'){
-		$getcart = cart::getcart();
-		if(!isset($getcart)||$getcart==null){
-			echo "<script>window.location = '?request=products'</script>";
-		}
-	}
-?>
-<div class="content">
+<?php if (isset($_GET['request']) && $_GET['request'] == 'order') {
+    $getcart = cart::getcart();
+    if (!isset($getcart) || $getcart == null) {
+        echo "<script>window.location = '?request=products'</script>";
+    }
+} ?>
+<div class="content" style="height:85vh"	>
 	<div class="content_top search-price">
 		<div class="hding">
 			<h3 style="font-size: 22px;font-weight: 500;color: #6c6c6c">TRANG ĐẶT HÀNG</h3>
@@ -15,8 +13,8 @@
 	</div>
 	<div class="section group order">
 		<?php
-			$getcart = cart::getcart();
-			if(isset($getcart)||$getcart!=null): ?>
+  $getcart = cart::getcart();
+  if (isset($getcart) || $getcart != null): ?>
 		<table class="bang">
 			<tr>
 				<th style="width: 5%">STT</th>
@@ -26,72 +24,68 @@
 				<th style="width: 20%">Thành tiền</th>
 			</tr>	
 		<?php
-				$tongtien = 0;
-				$i =0;
-				while($ketqua = $getcart->fetch_assoc()):
-					$tongtien += $ketqua['price']*$ketqua['amount'];
-					$i++;
-		?>
+  $tongtien = 0;
+  $i = 0;
+  while ($ketqua = $getcart->fetch_assoc()):
+
+      $tongtien += $ketqua['price'] * $ketqua['amount'];
+      $i++;
+      ?>
 			<tr>
-				<td class='hang'><?=$i?></td>
-				<td class='hang'><?=$ketqua['product_name']?></td>
-				<td class='hang'><?=number_format($ketqua['price'])?> VNĐ</td>
-				<td class='hang'><?=$ketqua['amount']?></td>
-				<td class='hang'><?=number_format($ketqua['price']*$ketqua['amount'])?> VNĐ</td>			
+				<td class='hang'><?= $i ?></td>
+				<td class='hang'><?= $ketqua['product_name'] ?></td>
+				<td class='hang'><?= number_format($ketqua['price']) ?> VNĐ</td>
+				<td class='hang'><?= $ketqua['amount'] ?></td>
+				<td class='hang'><?= number_format(
+        $ketqua['price'] * $ketqua['amount']
+    ) ?> VNĐ</td>			
 			</tr>
-		<?php endwhile; ?>
+		<?php
+  endwhile;
+  ?>
 		</table>
 		<div  class="bphai">
 			<div class="tongtien" style="width: 100%">
 				<table style="width: 100%">
 					<tr>
 						<th>Tổng tiền: </th>
-						<th><?=number_format($tongtien)?> VNĐ</th>
+						<th><?= number_format($tongtien) ?> VNĐ</th>
 					</tr>
 					<tr>
 						<td colspan="2"><a href="?request=cart">Quay lại giỏ hàng</a></td>
 					</tr>
 				</table>
 			</div>
+
 			<div style="width: 100%;padding: 30px 0px;">
 				<h1 style="text-align: center;font-size: 22px; font-weight: bold;">CHỌN PHƯƠNG THỨC THANH TOÁN</h1> <hr>
 				<div class="fmpay">
 					<div class="pay">
 						<form class="pthuc" action="?request=paymentoff" method="post">
-							<div>
-								<input type="submit" name="thanhtoanoff" value="Thanh toán khi nhận hàng" style="background-color: burlywood;">
-							</div>		
+							<input type="submit" name="thanhtoanoff" value="Thanh toán khi nhận hàng" style="background-color: burlywood;">
 						</form>	
 						<form class="pthuc" action="?request=payment_vnpay" method="post">
-							<div>
-								<input type="hidden" name="tongtien" value="<?=$tongtien?>">
-								<input type="submit" name="redirect" id="redirect" value="Thanh toán bằng VNPAY">
-							</div>		
+							<input type="hidden" name="tongtien" value="<?= $tongtien ?>">
+							<input type="submit" name="redirect" id="redirect" value="Thanh toán bằng VNPAY">
 						</form>						
 					</div>
 
 					<div class="pay">
 						<form class="pthuc" action="?request=payment_momo" method="post">
-							<div>
-								<input type="hidden" name="tongtien" value="<?=$tongtien?>">
+								<input type="hidden" name="tongtien" value="<?= $tongtien ?>">
 								<input type="submit" name="btnmomo" id="btnmomo" value="Thanh toán bằng QR MOMO" style="background-color: yellowgreen;">
-							</div>		
 						</form>	
 						<form class="pthuc" action="?request=payment_momoatm" method="post">
-							<div>
-								<input type="hidden" name="tongtien" value="<?=$tongtien?>">
+								<input type="hidden" name="tongtien" value="<?= $tongtien ?>">
 								<input type="submit" name="btn_momo_atm" id="btn_momo_atm" value="Thanh toán bằng MOMO ATM" style="background-color:darkcyan">
-							</div>		
 						</form>
 					</div>
 				</div>
 			</div>
 				
 		</div>
-		<?php
-			else: echo "<script>window.location = '?request=products'</script>"; 
-			endif;
-		?>
+		<?php else:echo "<script>window.location = '?request=products'</script>";endif;
+  ?>
 		
 	</div>
 </div>
@@ -100,15 +94,25 @@
 <style>
 	.fmpay{
 		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap:wrap;
 	}
 	.pay{
-		width: 50%;
-		float: left;
+		flex-basis:45%;
+		flex-wrap:wrap;
+
+		display: flex;
+		flex-direction: column;
+		gap:10px;
+		margin-bottom:10px;
 	}
 	.order {
     width: 100%;
     display: flex;
-}
+	flex-wrap: wrap;
+	}
 
 .order table,
 th,
@@ -138,8 +142,8 @@ td {
 
 .pthuc {
     float: left;
-    width: 100%;
 	display: flex;
+	width: 100%;
 	justify-content: center;
 }
 
@@ -169,9 +173,9 @@ td {
     background-color: orangered;
     border: none;
     border-radius: 8px;
+	width: 100%;
     cursor: pointer;
     color: white;
-	width: 200px;
 	text-align: center;
 }
 
@@ -200,5 +204,21 @@ td {
 .tongtien a:hover {
     opacity: 0.6;
     transition: 0.5s;
+}
+
+
+@media only screen and (max-width:1270px) {
+	.pay{
+		flex-basis:100%;
+		flex-wrap:wrap;
+	}
+}
+@media only screen and (max-width:640px) {
+	.bang{
+		flex-basis: 100%;
+	}
+	.bphai{
+		flex-basis: 100%;
+	}
 }
 </style>

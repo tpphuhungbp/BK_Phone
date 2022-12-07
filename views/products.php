@@ -164,14 +164,20 @@
 
 <style>
 	.searchprice {
+		margin:auto;
 		display: flex;
-		width: 97%;
+		flex-direction: row;
+		width: 95%;
+		justify-content: space-between;
 	}
-	.header, .clear{
-		width: 50%;
+	.heading {
+
+	}
+	.clear{
+
 	}
 	.clear select{
-		width: 40%;
+		width: 100%;
 		padding: 10px;
 		font-size: 20px;
 	}

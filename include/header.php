@@ -1,73 +1,78 @@
 <?php
-    include"./lib/session.php";
-    Session::init();
+include './lib/session.php';
+Session::init();
 ?>
 <?php
-	include_once"./lib/database.php";
-	include_once"./helper/format.php";
+include_once './lib/database.php';
+include_once './helper/format.php';
+//hàm tự lấy class tương ứng khi chuyển trang // spl_autoload_register(function($classname){ // 	include"./classes/".$classname.".php"; // });
+spl_autoload_register(function ($classname) {
+    include './model/m' . $classname . '.php';
+});
 
-
-	//hàm tự lấy class tương ứng khi chuyển trang
-	// spl_autoload_register(function($classname){
-	// 	include"./classes/".$classname.".php";
-	// });
-
-	spl_autoload_register(function($classname){
-		include"./model/m".$classname.".php";
-	});
-
-	//include các class đã tạo
-	// $db = new Database();
-	// $fm = new Format();
-	// $cart = new cart();
-	// $user = new user();
-	// $category = new category();
-	// $product = new product();
-	// $order = new order();
+//include các class đã tạo
+// $db = new Database();
+// $fm = new Format();
+// $cart = new cart();
+// $user = new user();
+// $category = new category();
+// $product = new product();
+// $order = new order();
 ?>
 <?php
-  header("Cache-Control: no-cache, must-revalidate");
-  header("Pragma: no-cache"); 
-  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
-  header("Cache-Control: max-age=2592000");
+header('Cache-Control: no-cache, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+header('Cache-Control: max-age=2592000');
 ?>
 <!DOCTYPE HTML>
 <head>
 <title>
-	<?php
-		if(isset($_GET['request'])){
-			switch($_GET['request']){
-				case 'userdetails':
-                    echo 'Thông tin cá nhân';break;
-                case 'order':
-                    echo 'Đặt hàng';break;
-                case 'home':
-                    echo 'Trang chủ';break;
-                case "contact":
-                    echo 'Liên hệ';break;
-                case "about":
-                    echo 'Giới thiệu';break;
-                case 'cart':
-                    echo 'Giỏ hàng';break;
-                case 'details':
-                    echo 'Chi tiết sản phẩm';break;
-                case 'products':
-                    echo 'Sản phẩm';break;
-                case 'productbycat':
-                    echo 'Sản phẩm';break;
-                case 'productbysearch':
-                    echo 'Sản phẩm';break;
-                case 'category':
-                    echo 'Phân loại';break;
-                case 'login':
-                    echo 'Đăng nhập';break;
-                case 'register':
-                    echo 'Đăng ký';break;
-				}
-		}else{
-			echo 'Trang chủ';
-		}
-	?>
+	<?php if (isset($_GET['request'])) {
+     switch ($_GET['request']) {
+         case 'userdetails':
+             echo 'Thông tin cá nhân';
+             break;
+         case 'order':
+             echo 'Đặt hàng';
+             break;
+         case 'home':
+             echo 'Trang chủ';
+             break;
+         case 'contact':
+             echo 'Liên hệ';
+             break;
+         case 'about':
+             echo 'Giới thiệu';
+             break;
+         case 'cart':
+             echo 'Giỏ hàng';
+             break;
+         case 'details':
+             echo 'Chi tiết sản phẩm';
+             break;
+         case 'products':
+             echo 'Sản phẩm';
+             break;
+         case 'productbycat':
+             echo 'Sản phẩm';
+             break;
+         case 'productbysearch':
+             echo 'Sản phẩm';
+             break;
+         case 'category':
+             echo 'Phân loại';
+             break;
+         case 'login':
+             echo 'Đăng nhập';
+             break;
+         case 'register':
+             echo 'Đăng ký';
+             break;
+     }
+ } else {
+     echo 'Trang chủ';
+ } ?>
 </title>
 <link rel="shortcut icon" type="image/png" href="https://thuthuatvui.com/wp-content/uploads.old/tong-hop-icon-mat-cuoi-chat-nhat-8.png"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -92,9 +97,12 @@
 </head>
 <body>
   	<div class="wrap">
+	  	<div class="logoHidden" style="text-align: center;">
+				<a href="./"><img src="images/BKPHONE_icon.png" alt="" width="50%" height="100%"/></a>
+		</div>
 		<div class="header_top">
 			<div class="logo" style="text-align: center">
-				<a href="./"><img src="images/BKPHONE_icon.png" alt="" width="70%" height="100px"/></a>
+				<a href="./"><img src="images/BKPHONE_icon.png" alt="" width="70%" height="100%"/></a>
 			</div>
 			<div class="header_top_right">
 				<div class="search_box">
@@ -106,26 +114,32 @@
 				<div class="shopping_cart">
 					<div class="cart">
 						<a style="width: 100%; display: block;" href="?request=cart">
-						<i class="fa-solid fa-cart-shopping"></i> Giỏ hàng ( <?php if(isset($_SESSION['tongsp'])){echo $_SESSION['tongsp'];} else echo 0; ?> )
+						<i class="fa-solid fa-cart-shopping"></i> <span class="spanCart">Giỏ hàng</span> ( <?php if (
+          isset($_SESSION['tongsp'])
+      ) {
+          echo $_SESSION['tongsp'];
+      } else {
+          echo 0;
+      } ?> )
 						</a>
 					</div>
 				</div>
-				<?php
-					if(isset($_GET['userid'])){
-						// $deleteAll = $cart->deleteAll();
-						session_destroy();	
-						session_start();
-						$_SESSION['tongsp'] = cart::get_amount();			
-						header("Location:?request=home");
-					}
-				?>
+				<?php if (isset($_GET['userid'])) {
+        // $deleteAll = $cart->deleteAll();
+        session_destroy();
+        session_start();
+        $_SESSION['tongsp'] = cart::get_amount();
+        header('Location:?request=home');
+    } ?>
 				<div class="login">
 					<div class="dropdown">
-						<button class="dropbtn"><i class="fa-solid fa-circle-user"></i> Tài khoản</button>
+						<button class="dropbtn"><i class="fa-solid fa-circle-user"></i> <span class="spanLogin">Tài khoản</span></button>
 						<div class="dropdown-content">
-							<?php if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true): ?>
-								<a href="?request=userdetails&user_id=<?=$_SESSION['user_id']?>" style="font-weight: bold;"><?=$_SESSION['user_name']?></a>
-								<a href="?userid=<?=$_SESSION['user_id']?>">Đăng xuất</a>
+							<?php if (isset($_SESSION['user_login']) && $_SESSION['user_login'] == true): ?>
+								<a href="?request=userdetails&user_id=<?= $_SESSION[
+            'user_id'
+        ] ?>" style="font-weight: bold;"><?= $_SESSION['user_name'] ?></a>
+								<a href="?userid=<?= $_SESSION['user_id'] ?>">Đăng xuất</a>
 							<?php else: ?>
 								<a href="?request=login">Đăng nhập</a>
 								<a href="?request=login">Đăng ký</a>

@@ -7,7 +7,7 @@
 		}
 	}
 ?>
-<div class="content">
+<div class="content" style="height:80vh">
 	<div class="support">
 		<div class="support_desc">
 			<h3>LIÊN HỆ</h3>
