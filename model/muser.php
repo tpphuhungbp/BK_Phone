@@ -95,7 +95,7 @@
 				Session::set('user_login',true);
 				Session::set('user_id',$rs['id']);
 				Session::set('user_name',$rs['name']);
-				$_SESSION['tongsp'] = cart::get_amount();				
+				$_SESSION['tongsp'] = cart::get_amount();
 				header("Location:?request=home");
 			}else{
 				return "<script>alert('Tài khoản hoặc mật khẩu không chính xác!')</script>";

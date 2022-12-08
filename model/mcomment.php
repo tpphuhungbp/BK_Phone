@@ -1,11 +1,4 @@
-<?php
-$url = $_SERVER['REQUEST_URI'];
-if (strlen(strstr($url, 'admin')) > 0) {
-    include_once '../lib/database.php';
-} else {
-    include_once './lib/database.php';
-}
-?>
+
 
 
 <?php class comment

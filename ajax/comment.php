@@ -1,4 +1,20 @@
 <?php
+    include_once '../lib/database.php';
+    include_once '../model/mcomment.php';
+?>
+
+<?php
+    // add to database
+    $score = $_POST['score'];
+    $time = $_POST['time'];
+    $comment = $_POST['comment'];
+    $user_id = $_POST['user_id'];
+    $product_id = $_POST['product_id'];
+
+    $insertComment = new comment($user_id, $product_id, $comment, $score);
+    $ketqua = $insertComment->insert_comment();
+
+
 echo '<div class="comment-items">
     <div class="comment-item-left">
         <img src="./images/login.png" alt="sai duong dan" width="50%">

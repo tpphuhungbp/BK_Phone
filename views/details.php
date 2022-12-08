@@ -11,7 +11,7 @@
 		$updateview = product::update_view($id);
 	}
 ?>
-<div class="content" style="height:150vh">
+<div class="content" style="height:180vh">
 	<div class="section group">
 		<div class="cont-desc span_1_of_2">
 			<?php
@@ -87,14 +87,17 @@
 
 					<input id="nameForm" type="hidden" value="<?= $kq_cur_user['name'] ?>">
 					<input id="useridForm" type="hidden" value="<?= $cur_user_id ?>">
+					<input id="productidForm" type="hidden" value="<?= $id ?>">
 					
-					<label for="comment-score">Score: </label>
+					<label class='comment-score' for="comment-score">Score: </label>
 					<input type="number" id="comment-score" min="1" max="5">
+					<br><br>
+					<div class='commentDiv'>
+					<label class='comment-comment' for="comment-comment">Comment: </label>
+					<textarea name="" id="comment-comment" cols="50" rows="3"></textarea>
+					</div>
 					<br>
-					<label for="comment-comment">Comment: </label>
-					<input type="text" id="comment-comment">
-					<br>
-					<input class="btn btn-primary btn-md" type="submit" value="Submit"></input>
+					<input class="button-21" type="submit" value="Submit"></input>
 				</form>
 			</div>
 		</div>
@@ -130,6 +133,19 @@
 
 
 <style>
+	.comment-score{
+		margin-right:28px;
+	}
+	.comment-comment{
+		margin-right:6px;
+	}
+	.commentDiv{
+		display:flex;
+		justify-content:flex-start;
+	}
+	#comment-comment{
+		height:200%;
+	}
 	.newComment{
 		width: 100%;
 	}
@@ -185,6 +201,48 @@
             -webkit-transform: scale(1.3);
                     transform: scale(1.3);
         }
+		.button-21 {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-21:active,
+.button-21:focus {
+  outline: none;
+}
+
+.button-21:hover {
+  background-position: -20px -20px;
+}
+
+.button-21:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
 </style>
 
 
@@ -200,9 +258,10 @@
 				data:{
 					score: $('#comment-score').val(),
 					comment:$('#comment-comment').val(),
-					time:'current time',
+					time:'Your newest comment',
 					name: $('#nameForm').val(),
-					user_id: $('#useridForm').val()
+					user_id: $('#useridForm').val(),
+					product_id : $('#productidForm').val()
 				},
 				success: function(response)
 				{
@@ -214,3 +273,5 @@
 		});
 	});
 </script>
+
+

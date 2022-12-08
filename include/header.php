@@ -77,13 +77,8 @@ header('Cache-Control: max-age=2592000');
 <link rel="shortcut icon" type="image/png" href="https://thuthuatvui.com/wp-content/uploads.old/tong-hop-icon-mat-cuoi-chat-nhat-8.png"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all"/>
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="js/jquerymain.js"></script>
 <script src="js/script.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
@@ -129,7 +124,7 @@ header('Cache-Control: max-age=2592000');
 						</a>
 					</div>
 				</div>
-	<?php if ( isset($_GET['userid']) ) {
+				<?php if (isset($_GET['userid'])) {
         // $deleteAll = $cart->deleteAll();
         session_destroy();
         session_start();
@@ -141,7 +136,9 @@ header('Cache-Control: max-age=2592000');
 						<button class="dropbtn"><i class="fa-solid fa-circle-user"></i> <span class="spanLogin">Tài khoản</span></button>
 						<div class="dropdown-content">
 							<?php if (isset($_SESSION['user_login']) && $_SESSION['user_login'] == true): ?>
-								<a href="?request=userdetails&user_id=<?= $_SESSION['user_id'] ?>" style="font-weight: bold;"><?= $_SESSION['user_name'] ?></a>
+								<a href="?request=userdetails&user_id=<?= $_SESSION[
+            'user_id'
+        ] ?>" style="font-weight: bold;"><?= $_SESSION['user_name'] ?></a>
 								<a href="?userid=<?= $_SESSION['user_id'] ?>">Đăng xuất</a>
 							<?php else: ?>
 								<a href="?request=login">Đăng nhập</a>
@@ -189,4 +186,3 @@ header('Cache-Control: max-age=2592000');
 			<div class="clear"></div>
 			</ul>
 		</div>
-
