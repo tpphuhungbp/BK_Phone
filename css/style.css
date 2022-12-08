@@ -457,38 +457,6 @@ input[type="number"] {
     border-radius: 3px;
 }
 
-.register_account form input[type="text"],
-.register_account form select {
-    font-size: 12px;
-    color: #B3B1B1;
-    padding: 8px;
-    outline: none;
-    margin: 5px 0;
-    width: 340px;
-}
-
-.register_account form select {
-    width: 360px;
-    color: #666;
-}
-
-.register_account form input[type="text"].code {
-    width: 15%;
-}
-
-.register_account form input[type="text"].number {
-    width: 69.8%;
-}
-
-.register_account table td {
-    width: 100%;
-}
-
-.register_account p {
-    font-size: 12px;
-    color: #666;
-}
-
 .search {
     float: left;
     margin-top: 3px;
@@ -2147,21 +2115,6 @@ table.tblone img {
         width: 100%;
         margin-top: 0.5em;
     }
-    .register_account {
-        padding: 10px;
-    }
-    .register_account form input[type="text"] {
-        width: 240px;
-    }
-    .register_account form select {
-        width: 260px;
-    }
-    .register_account form input[type="text"].code {
-        width: 15%;
-    }
-    .register_account form input[type="text"].number {
-        width: 63.99%;
-    }
     .login_panel {
         padding: 10px;
     }
@@ -2368,21 +2321,6 @@ table.tblone img {
     .support img {
         width: 25%;
         margin-left: 3%;
-    }
-    .register_account {
-        padding: 10px;
-    }
-    .register_account form input[type="text"] {
-        width: 200px;
-    }
-    .register_account form select {
-        width: 220px;
-    }
-    .register_account form input[type="text"].code {
-        width: 15%;
-    }
-    .register_account form input[type="text"].number {
-        width: 60.8%;
     }
     .login_panel {
         width: 30%;
@@ -2630,22 +2568,6 @@ table.tblone img {
     }
     /** End contact-form **/
     /*** Login ***/
-    .register_account form input[type="text"] {
-        width: 235px;
-    }
-    .register_account form select {
-        width: 255px;
-    }
-    .register_account form input[type="text"].code {
-        width: 10%;
-    }
-    .register_account form input[type="text"].number {
-        width: 68.5%;
-    }
-
-    .login_panel button {
-        font-size: 15px;
-    }
     /*** Preview ***/
     .grid {
         margin: 0;
@@ -2899,24 +2821,7 @@ table.tblone img {
     }
     /** End contact-form **/
     /*** Login ***/
-    .register_account table {
-        width: 100%;
-    }
-    .register_account table td {
-        display: block;
-    }
-    .register_account form input[type="text"] {
-        width: 95%;
-    }
-    .register_account form select {
-        width: 100%;
-    }
-    .register_account form input[type="text"].code {
-        width: 10%;
-    }
-    .register_account form input[type="text"].number {
-        width: 76.5%;
-    }
+
     .login_panel button {
         font-size: 15px;
     }
