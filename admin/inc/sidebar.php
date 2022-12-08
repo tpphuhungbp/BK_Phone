@@ -42,6 +42,11 @@
                         <li><a href="contactlist.php">Danh sách liên hệ</a> </li>
                     </ul>
                 </li>
+                <li>Quản lý bình luận
+                    <ul class="submenu">
+                        <li><a href="commentlist.php">Danh sách bình luận</a> </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
