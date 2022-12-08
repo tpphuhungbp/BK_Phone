@@ -1055,7 +1055,7 @@ button.grey:hover,
 .footer {
     position: relative;
     background-color: #042b92;
-    box-shadow: inset 0px 1px 8px #222;
+    box-shadow: inset 0px 1px 2px #222;
 }
 
 .section {

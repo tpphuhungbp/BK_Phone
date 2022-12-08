@@ -1,11 +1,4 @@
-<?php
-$url = $_SERVER['REQUEST_URI'];
-if (strlen(strstr($url, 'admin')) > 0) {
-    include_once '../lib/database.php';
-} else {
-    include_once './lib/database.php';
-}
-?>
+
 
 
 <?php class comment
@@ -40,7 +33,14 @@ if (strlen(strstr($url, 'admin')) > 0) {
     public static function get_comment()
     {
         $db = new Database();
-        $query = 'select * from comment order by score desc';
+        $query = "select * from comment order by score desc";
+        $ketqua = $db->select($query);
+        return $ketqua;
+    }
+    public static function get_comment_byPid($product_id)
+    {
+        $db = new Database();
+        $query = "select * from comment where product_id=$product_id order by score desc";
         $ketqua = $db->select($query);
         return $ketqua;
     }
