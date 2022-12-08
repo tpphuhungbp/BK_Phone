@@ -11,7 +11,7 @@
 		$updateview = product::update_view($id);
 	}
 ?>
-<div class="content" style="height:80vh">
+<div class="content" style="height:150vh">
 	<div class="section group">
 		<div class="cont-desc span_1_of_2">
 			<?php
@@ -68,10 +68,99 @@
 			</ul>
 		</div>
 	</div>
+	<div class = "comment_div">
+		<h2>Bình luận</h2>
+		<br>
+		<?php
+			if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true):
+				$cur_user_id = $_SESSION['user_id'];
+				$getcuruserbyid = user::getuserbyid($cur_user_id);
+				$kq_cur_user = $getcuruserbyid->fetch_assoc();
+		?>
+		<div class="comment-items">
+			<div class="comment-item-left">
+				<img src="images/login.png" alt="" width='50%'>
+			</div>
+			<div class="comment-item-right">
+				<p class="comment-user"> <?= $kq_cur_user['name'] ?></p>
+				<label for="comment-score">Score: </label>
+				<input type="number" id="comment-score" min="1" max="5">
+				<br>
+				<label for="comment-commnet">Comment: </label>
+				<input type="text" id="comment-commnet">
+			</div>
+			<!-- <div class="comment-item-right-hidden">
+				<p class="comment-user"> <?= $kq_user['name'] ?></p>
+				<p class="comment-user"> <?php for( $i=0; $i<$kq['score']; $i++) echo '⭐'  ?></p>
+
+				<p class="comment-time"> <?= $kq['time'] ?></p>
+				<p class="comment-comment"> <?= $kq['comment'] ?></p>
+			</div> -->
+		</div>
+		<?php endif; ?>
+		
+
+
+		<?php
+			$getcommentbyuserid = comment::get_comment_byPid($id);
+			if(isset($getcommentbyuserid)&&$getcommentbyuserid!=null):
+				while($kq = $getcommentbyuserid->fetch_assoc()):
+					$getuserbyid = user::getuserbyid($kq['user_id']);
+					$kq_user = $getuserbyid->fetch_assoc();
+		?>
+		<div class="comment-items">
+			<div class="comment-item-left">
+				<img src="images/login.png" alt="" width='50%'>
+			</div>
+			<div class="comment-item-right">
+				<p class="comment-user"> <?= $kq_user['name'] ?></p>
+				<p class="comment-user"> <?php for( $i=0; $i<$kq['score']; $i++) echo '⭐'  ?></p>
+
+				<p class="comment-time"> <?= $kq['time'] ?></p>
+				<p class="comment-comment"> <?= $kq['comment'] ?></p>
+			</div>
+		</div>
+		<hr class="comment-hr">
+		<?php endwhile; endif; ?>
+	</div>
 </div>
 
 
 <style>
+	.comment-items{
+		display:flex;
+		flex-direction:row;
+		margin-bottom:2%;
+	}
+	.comment-item-left{
+		flex-basis:5%
+	}
+	.comment-item-left img{
+		border:1px solid black;
+		border-radius: 20px;
+	}
+
+	.comment-item-right{
+		flex-basis:90%
+	}
+	.comment-user{
+		font-weight:700;
+	}
+	.comment-time{
+		margin-top:1%;
+		margin-bottom:1%;
+		font-weight:100;
+		color:gray;
+		font-size:14px;
+	}
+	.comment-comment{
+		font-weight:500;
+	}
+	.comment-hr{
+		width:90%;
+		margin-bottom:1.5%;
+	}
+
 	.images_3_of_2{
             overflow: hidden; /** DÒNG BẮT BUỘC CÓ **/
 		    position: relative;
