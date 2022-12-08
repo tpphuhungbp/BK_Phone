@@ -83,21 +83,24 @@
 			</div>
 			<div class="comment-item-right">
 				<p class="comment-user"> <?= $kq_cur_user['name'] ?></p>
-				<label for="comment-score">Score: </label>
-				<input type="number" id="comment-score" min="1" max="5">
-				<br>
-				<label for="comment-commnet">Comment: </label>
-				<input type="text" id="comment-commnet">
-			</div>
-			<!-- <div class="comment-item-right-hidden">
-				<p class="comment-user"> <?= $kq_user['name'] ?></p>
-				<p class="comment-user"> <?php for( $i=0; $i<$kq['score']; $i++) echo '⭐'  ?></p>
+				<form id='createComment'  method="post">
 
-				<p class="comment-time"> <?= $kq['time'] ?></p>
-				<p class="comment-comment"> <?= $kq['comment'] ?></p>
-			</div> -->
+					<input id="nameForm" type="hidden" value="<?= $kq_cur_user['name'] ?>">
+					<input id="useridForm" type="hidden" value="<?= $cur_user_id ?>">
+					
+					<label for="comment-score">Score: </label>
+					<input type="number" id="comment-score" min="1" max="5">
+					<br>
+					<label for="comment-comment">Comment: </label>
+					<input type="text" id="comment-comment">
+					<br>
+					<input class="btn btn-primary btn-md" type="submit" value="Submit"></input>
+				</form>
+			</div>
 		</div>
-		<?php endif; ?>
+		<div id="newComment">
+	</div>
+	<?php endif; ?>
 		
 
 
@@ -127,9 +130,16 @@
 
 
 <style>
+	.newComment{
+		width: 100%;
+	}
+	.hidden{
+		display: none;
+	}
 	.comment-items{
 		display:flex;
 		flex-direction:row;
+		flex-wrap:wrap;
 		margin-bottom:2%;
 	}
 	.comment-item-left{
@@ -176,3 +186,31 @@
                     transform: scale(1.3);
         }
 </style>
+
+
+
+<!-- --------------------------------------- ajax ----------------------------------------- -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#createComment').submit(function(e) {
+			e.preventDefault();
+			$.ajax({
+				type: "POST",
+				url: 'ajax/comment.php',
+				data:{
+					score: $('#comment-score').val(),
+					comment:$('#comment-comment').val(),
+					time:'current time',
+					name: $('#nameForm').val(),
+					user_id: $('#useridForm').val()
+				},
+				success: function(response)
+				{
+					$('#newComment').html(response);
+					$('#comment-score').val("");
+					$('#comment-comment').val("");
+				}
+			});
+		});
+	});
+</script>
