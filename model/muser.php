@@ -84,6 +84,25 @@
 				return "<script>alert('Đổi mật khẩu thất bại!')</script>";
 			}
 		}
+		public static function del_user($id){
+			$db = new Database();
+			$query1 = "select * from users where id=$id";
+			$ketqua1 = $db->select($query1);
+			if($ketqua1){
+				$query = "delete from users where id = $id";
+				$ketqua = $db->delete($query);
+				if($ketqua){
+					echo "<script> alert('Đã xóa thành công tài khoản') </script>";
+					echo "<script> window.location='userlist.php' </script>";
+				}else{
+					echo "<script> alert('Xóa tài khoản thất bại') </script>";
+					echo "<script> window.location='userlist.php' </script>";
+				}
+			}else{
+				echo "<script> alert('Xóa tài khoản thất bại') </script>";
+				echo "<script> window.location='userlist.php' </script>";
+			}
+		}
 		public static function login_user($tk,$mk){
 			$db = new Database();
 			$mk2 = "";

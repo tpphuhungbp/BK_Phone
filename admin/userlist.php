@@ -3,6 +3,12 @@
 <?php
 	include"../model/muser.php";
 ?>
+<?php
+	if(isset($_GET['delid'])){
+		$id = $_GET['delid'];
+		$del_prod = user::del_user($id);
+	}
+?>
 <div class="grid_10">
 	<div class="box round first grid">
 		<h2>Danh sách tài khoản</h2>
@@ -17,6 +23,7 @@
 					<th>Phone</th>
 					<th>Address</th>
 					<th>Quyền</th>
+					<th>Hành động</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,7 +50,12 @@
 								echo "Người dùng";
 							}
 						?>
-					</td>					
+					</td>	
+					<td>
+						<?php
+							echo $ketqua['role']==1 ? '' : '<a onclick="return confirm("Bạn có muốn loại tài khoản này không?")" href="?delid=' . $ketqua['id'] . '">Xóa</a>';
+						?>
+					</td>			
 				</tr>			
 			<?php endwhile; endif; ?>	
 			</tbody>
