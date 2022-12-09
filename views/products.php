@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" style={}>
 	<div class="content_top searchprice">
 		<div class="heading">
 		<h3>SẮP XẾP :</h3>

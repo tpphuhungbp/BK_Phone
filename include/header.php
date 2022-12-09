@@ -97,7 +97,8 @@ header('Cache-Control: max-age=2592000');
 </head>
 <body>
   	<div class="wrap">
-	  	<div class="logoHidden" style="text-align: center;">
+  		<div class="allNavbar">
+		  <div class="logoHidden" style="text-align: center;">
 				<a href="./"><img src="images/BKPHONE_icon.png" alt="" width="50%" height="100%"/></a>
 		</div>
 		<div class="header_top">
@@ -175,14 +176,131 @@ header('Cache-Control: max-age=2592000');
 				</style>
 	 		</div>
 		</div>
-		<div class="menu">
-			<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-			<li><a href="./"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-			<li><a href="?request=products&page=1"><i class="fa-brands fa-product-hunt"></i> Sản phẩm</a> </li>
-			<li><a href="?request=category"><i class="fa-solid fa-copyright"></i> Phân loại</a></li>
-			<li><a href="?request=about"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a> </li>	  
-			<li><a href="?request=contact"><i class="fa-solid fa-address-book"></i> Liên hệ</a> </li>	  
-			<li><a href="?request=cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a></li>
-			<div class="clear"></div>
-			</ul>
+
+		<div class="navbar">
+			<div class="navBarButton">
+				<div class="dropdown">
+					<button></i>=</button>
+					<div class="dropdown-content">
+						<a href="./"><i class="fa-solid fa-house"></i> Trang chủ</a>
+						<a href="?request=products&page=1"><i class="fa-brands fa-product-hunt"></i> Sản phẩm</a>
+						<a href="?request=category"><i class="fa-solid fa-copyright"></i> Phân loại</a>
+						<a href="?request=about"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a> 	  
+						<a href="?request=contact"><i class="fa-solid fa-address-book"></i> Liên hệ</a> 	  
+						<a href="?request=cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+					</div>				
+				</div>
+			</div class="navBarGo">
+			<div class="navbar1">
+				<a href="./"><i class="fa-solid fa-house"></i> Trang chủ</a>
+			</div>
+			<div class="navbar2">
+				<a href="?request=products&page=1"><i class="fa-brands fa-product-hunt"></i> Sản phẩm</a>
+			</div>
+			<div class="navbar3">
+				<a href="?request=category"><i class="fa-solid fa-copyright"></i> Phân loại</a>
+			</div>
+			<div class="navbar4">
+				<a href="?request=about"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a> 	  
+			</div>
+			<div class="navbar5">
+				<a href="?request=contact"><i class="fa-solid fa-address-book"></i> Liên hệ</a> 	  
+			</div>
+			<div class="navbar6">
+				<a href="?request=cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+			</div>
 		</div>
+		</div>
+<style>
+	.search_box{
+		background-color:white;
+	}
+	#search{
+		height:100%;
+	}
+	.allNavbar{
+		background-color: #4a90e2;
+		padding-bottom:2%;
+		padding-left:1%;
+		padding-right:1%;
+	}
+	.navbar{
+		display:flex;
+		flex-direction:row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.navbar a{
+		color:white;
+		font-size: 14px;
+	}
+	.navButton{
+		display:inline;
+	}
+	.dropdown-content a{
+		color:black;
+	}
+	.navBarButton{
+		flex-basis:2%;
+	}
+	.navbar1{
+		flex-basis:15%;
+	}
+	.navbar2{
+		flex-basis:15%;
+	}
+	.navbar3{
+		flex-basis:15%;
+	}
+	.navbar4{
+		flex-basis:15%;
+	}
+	.navbar5{
+		flex-basis:15%;
+	}
+	.navbar6{
+		flex-basis:15%;
+	}
+	@media only screen and (max-width:800px) {
+		.navbar6{
+			display:none;
+		}
+		.navBarButton{
+			flex-basis:5%;
+		}
+		.dropdown{
+			width:100%;
+		}
+	}
+	@media only screen and (max-width:640px) {
+		.navbar5{
+			display:none;
+		}
+		.navbar1{
+		flex-basis:20%;
+		}
+		.navbar2{
+			flex-basis:20%;
+		}
+		.navbar3{
+			flex-basis:20%;
+		}
+		.navbar4{
+			flex-basis:20%;
+		}
+	}
+	@media only screen and (max-width:625px) {
+		.navbar4{
+			display:none;
+		}
+		.navbar1{
+		flex-basis:25%;
+		}
+		.navbar2{
+			flex-basis:25%;
+		}
+		.navbar3{
+			flex-basis:25%;
+		}
+	}
+</style>
