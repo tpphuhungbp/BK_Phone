@@ -52,6 +52,14 @@
         $ketqua = $db->update($sql);
         return $ketqua;
     }
+    public static function delete_comment($id)
+    {
+        $db = new Database();
+
+        $sql = "delete from comment where id = $id";
+        $ketqua = $db->update($sql);
+        return $ketqua;
+    }
 }
 
 ?>

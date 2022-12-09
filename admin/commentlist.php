@@ -8,10 +8,10 @@ include_once '../model/muser.php';
 ?>
 
 <?php
-// if(isset($_GET['delid'])){
-// 	$id = $_GET['delid'];
-// 	$del_prod = product::del_prod($id);
-// }
+if(isset($_GET['delid'])){
+	$id = $_GET['delid'];
+	$del_prod = comment::delete_comment($id);
+}
 ?>
 
 <div class="grid_10">
@@ -57,7 +57,7 @@ include_once '../model/muser.php';
                                 <td><?= $row['comment'] ?></td>
                                 <td><?= $row['score'] ?></td>
                                 <td><?= $row['time'] ?></td>
-                                <td><a onclick="return confirm('Bạn có muốn loại bình luận này không?')" href="?delid=<?= $ketqua['id'] ?>">Xóa</a></td>
+                                <td><a onclick="return confirm('Bạn có muốn loại bình luận này không?')" href="?delid=<?= $row['id'] ?>">Xóa</a></td>
                             </tr>
                         <?php }
                     } else { ?>
